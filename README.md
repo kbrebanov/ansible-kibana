@@ -1,31 +1,38 @@
-Role Name
-=========
+kibana
+======
 
-A brief description of the role goes here.
+Installs and configures Kibana
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role requires Ansible 1.6 or higher.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+| Name                     | Default                                                          | Description                       |
+|--------------------------|------------------------------------------------------------------|-----------------------------------|
+| kibana_version           | 4.1.1                                                            | Version of Kibana to install      |
+| kibana_sha256sum         | 6f42d25f337fd49f38e2af81b9ab6e0c987a199a8c0b2e1410d072f812cb4520 | SHA 256 checksum of archive       |
+| kibana_port              | 5601                                                             | Kibana server port                |
+| kibana_host_bind         | "0.0.0.0"                                                        | The host to bind the server to    |
+| kibana_elasticsearch_url | "http://localhost:9200"                                          | The Elasticsearch instance to use |
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+Install Kibana
+```
+- hosts: all
+  roles:
+    - { role: kbrebanov.kibana }
+```
 
 License
 -------
@@ -35,4 +42,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Kevin Brebanov

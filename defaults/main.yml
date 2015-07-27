@@ -1,2 +1,8 @@
 ---
 # defaults file for kibana
+
+kibana_version: 4.1.1
+kibana_sha256sum: 6f42d25f337fd49f38e2af81b9ab6e0c987a199a8c0b2e1410d072f812cb4520
+kibana_port: 5601
+kibana_host_bind: "0.0.0.0"
+kibana_elasticsearch_url: "http://localhost:9200"
