@@ -7,3 +7,5 @@ kibana_install_dir: /opt/kibana
 kibana_install_dir_owner: root
 kibana_install_dir_group: root
 kibana_install_dir_mode: "0755"
+kibana_pid_file: /var/run/kibana.pid
+kibana_log_file: /var/log/kibana.log

@@ -6,3 +6,18 @@ kibana_sha256sum: 5f6213f7ac7ef71016a6750f09e7316ccc9bca139bc5389b417395b179bc37
 kibana_port: 5601
 kibana_host_bind: "0.0.0.0"
 kibana_elasticsearch_url: "http://localhost:9200"
+kibana_elasticsearch_preserve_host: true
+kibana_elasticsearch_index: ".kibana"
+kibana_elasticsearch_username: ''
+kibana_elasticsearch_password: ''
+kibana_elasticsearch_client_crt: ''
+kibana_elasticsearch_client_key: ''
+kibana_ca: ''
+kibana_default_app_id: "discover"
+kibana_request_timeout: 300000
+kibana_ping_timeout: "{{ kibana_request_timeout }}"
+kibana_shard_timeout: 0
+kibana_startup_timeout: 0
+kibana_verify_ssl: true
+kibana_ssl_key_file: ''
+kibana_ssl_cert_file: ''
