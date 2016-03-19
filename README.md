@@ -6,7 +6,7 @@ Installs and configures Kibana
 Requirements
 ------------
 
-This role requires Ansible 1.6 or higher.
+This role requires Ansible 1.9 or higher.
 
 Role Variables
 --------------
