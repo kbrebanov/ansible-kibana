@@ -1,115 +1,77 @@
 # {{ ansible_managed }}
 
-# Kibana is served by a back end server. This controls which port to use.
-port: {{ kibana_port }}
+server.port: {{ kibana_server_port }}
+server.host: "{{ kibana_server_host }}"
+server.basePath: "{{ kibana_server_base_path }}"
+server.maxPayloadBytes: {{ kibana_server_max_payload_bytes }}
 
-# The host to bind the server to.
-host: "{{ kibana_host_bind }}"
-
-# The Elasticsearch instance to use for all your queries.
-elasticsearch_url: "{{ kibana_elasticsearch_url }}"
-
-# preserve_elasticsearch_host true will send the hostname specified in `elasticsearch`. If you set it to false,
-# then the host you use to connect to *this* Kibana instance will be sent.
+elasticsearch.url: "{{ kibana_elasticsearch_url }}"
 {% if kibana_elasticsearch_preserve_host %}
-elasticsearch_preserve_host: true
+elasticsearch.preserveHost: true
 {% else %}
-elasticsearch_preserve_host: false
+elasticsearch.preserveHost: false
 {% endif %}
 
-# Kibana uses an index in Elasticsearch to store saved searches, visualizations
-# and dashboards. It will create a new index if it doesn't already exist.
-kibana_index: "{{ kibana_elasticsearch_index }}"
+kibana.index: "{{ kibana_index }}"
+kibana.defaultAppId: "{{ kibana_default_app_id }}"
 
-# If your Elasticsearch is protected with basic auth, this is the user credentials
-# used by the Kibana server to perform maintence on the kibana_index at statup. Your Kibana
-# users will still need to authenticate with Elasticsearch (which is proxied thorugh
-# the Kibana server)
 {% if kibana_elasticsearch_username %}
-kibana_elasticsearch_username: {{ kibana_elasticsearch_username }}
-{% else %}
-# kibana_elasticsearch_username: user
+elasticsearch.username: "{{ kibana_elasticsearch_username }}"
 {% endif %}
 {% if kibana_elasticsearch_password %}
-kibana_elasticsearch_password: {{ kibana_elasticsearch_password }}
-{% else %}
-# kibana_elasticsearch_password: pass
+elasticsearch.password: "{{ kibana_elasticsearch_password }}"
 {% endif %}
 
-# If your Elasticsearch requires client certificate and key
-{% if kibana_elasticsearch_client_crt %}
-kibana_elasticsearch_client_crt: {{ kibana_elasticsearch_client_crt }}
-{% else %}
-# kibana_elasticsearch_client_crt: /path/to/your/client.crt
+{% if kibana_server_ssl_cert %}
+server.ssl.cert: {{ kibana_server_ssl_cert }}
 {% endif %}
-{% if kibana_elasticsearch_client_key %}
-kibana_elasticsearch_client_key: {{ kibana_elasticsearch_client_key }}
-{% else %}
-# kibana_elasticsearch_client_key: /path/to/your/client.key
+{% if kibana_server_ssl_key %}
+server.ssl.key: {{ kibana_server_ssl_key }}
 {% endif %}
 
-# If you need to provide a CA certificate for your Elasticsarech instance, put
-# the path of the pem file here.
-{% if kibana_ca %}
-ca: {{ kibana_ca }}
-{% else %}
-# ca: /path/to/your/CA.pem
+{% if kibana_elasticsearch_ssl_cert %}
+elasticsearch.ssl.cert: {{ kibana_elasticsearch_ssl_cert }}
+{% endif %}
+{% if kibana_elasticsearch_ssl_key %}
+elasticsearch.ssl.key: {{ kibana_elasticsearch_ssl_key }}
 {% endif %}
 
-# The default application to load.
-default_app_id: "{{ kibana_default_app_id }}"
-
-# Time in milliseconds to wait for elasticsearch to respond to pings, defaults to
-# request_timeout setting
-ping_timeout: {{ kibana_ping_timeout }}
-
-# Time in milliseconds to wait for responses from the back end or elasticsearch.
-# This must be > 0
-request_timeout: {{ kibana_request_timeout }}
-
-# Time in milliseconds for Elasticsearch to wait for responses from shards.
-# Set to 0 to disable.
-shard_timeout: {{ kibana_shard_timeout }}
-
-# Time in milliseconds to wait for Elasticsearch at Kibana startup before retrying
-startup_timeout: {{ kibana_startup_timeout }}
-
-# Set to false to have a complete disregard for the validity of the SSL
-# certificate.
-{% if kibana_verify_ssl %}
-verify_ssl: true
-{% else %}
-verify_ssl: false
+{% if kibana_elasticsearch_ssl_ca %}
+elasticsearch.ssl.ca: {{ kibana_elasticsearch_ssl_ca }}
 {% endif %}
 
-# SSL for outgoing requests from the Kibana Server (PEM formatted)
-{% if kibana_ssl_key_file %}
-ssl_key_file: {{ kibana_ssl_key_file }}
+{% if kibana_elasticsearch_ssl_verify %}
+elasticsearch.ssl.verify: true
 {% else %}
-# ssl_key_file: /path/to/your/server.key
-{% endif %}
-{% if kibana_ssl_cert_file %}
-ssl_cert_file: {{ kibana_ssl_cert_file }}
-{% else %}
-# ssl_cert_file: /path/to/your/server.crt
+elasticsearch.ssl.verify: false
 {% endif %}
 
-# Set the path to where you would like the process id file to be created.
-pid_file: {{ kibana_pid_file }}
+elasticsearch.pingTimeout: {{ kibana_elasticsearch_ping_timeout }}
 
-# If you would like to send the log output to a file you can set the path below.
-# This will also turn off the STDOUT log output.
-log_file: {{ kibana_log_file }}
+elasticsearch.requestTimeout: {{ kibana_elasticsearch_request_timeout }}
 
-# Plugins that are included in the build, and no longer found in the plugins/ folder
-bundled_plugin_ids:
- - plugins/dashboard/index
- - plugins/discover/index
- - plugins/doc/index
- - plugins/kibana/index
- - plugins/markdown_vis/index
- - plugins/metric_vis/index
- - plugins/settings/index
- - plugins/table_vis/index
- - plugins/vis_types/index
- - plugins/visualize/index
+elasticsearch.shardTimeout: {{ kibana_elasticsearch_shard_timeout }}
+
+elasticsearch.startupTimeout: {{ kibana_elasticsearch_startup_timeout }}
+
+pid.file: {{ kibana_pid_file }}
+
+logging.dest: {{ kibana_logging_dest }}
+
+{% if kibana_logging_silent %}
+logging.silent: true
+{% else %}
+logging.silent: false
+{% endif %}
+
+{% if kibana_logging_quiet %}
+logging.quiet: true
+{% else %}
+logging.quiet: false
+{% endif %}
+
+{% if kibana_logging_verbose %}
+logging.verbose: true
+{% else %}
+logging.verbose: false
+{% endif %}

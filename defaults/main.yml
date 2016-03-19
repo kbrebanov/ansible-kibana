@@ -1,23 +1,33 @@
 ---
 # defaults file for kibana
 
-kibana_version: 4.1.2
-kibana_sha256sum: 5f6213f7ac7ef71016a6750f09e7316ccc9bca139bc5389b417395b179bc370c
-kibana_port: 5601
-kibana_host_bind: "0.0.0.0"
-kibana_elasticsearch_url: "http://localhost:9200"
-kibana_elasticsearch_preserve_host: true
-kibana_elasticsearch_index: ".kibana"
-kibana_elasticsearch_username: ''
+kibana_version: 4.4.2
+kibana_sha256sum: ce0504d7a9440200b49851a64e010ddf8a8ed7b881135f6121d594ba1c0d6cfd
+
+kibana_default_app_id: discover
+kibana_index: .kibana
+
+kibana_server_base_path: ''
+kibana_server_host: 0.0.0.0
+kibana_server_max_payload_bytes: 1048576
+kibana_server_port: 5601
+kibana_server_ssl_cert: ''
+kibana_server_ssl_key: ''
+
 kibana_elasticsearch_password: ''
-kibana_elasticsearch_client_crt: ''
-kibana_elasticsearch_client_key: ''
-kibana_ca: ''
-kibana_default_app_id: "discover"
-kibana_request_timeout: 300000
-kibana_ping_timeout: "{{ kibana_request_timeout }}"
-kibana_shard_timeout: 0
-kibana_startup_timeout: 0
-kibana_verify_ssl: true
-kibana_ssl_key_file: ''
-kibana_ssl_cert_file: ''
+kibana_elasticsearch_ping_timeout: "{{ kibana_elasticsearch_request_timeout }}"
+kibana_elasticsearch_preserve_host: true
+kibana_elasticsearch_request_timeout: 300000
+kibana_elasticsearch_shard_timeout: 0
+kibana_elasticsearch_ssl_ca: ''
+kibana_elasticsearch_ssl_cert: ''
+kibana_elasticsearch_ssl_key: ''
+kibana_elasticsearch_ssl_verify: true
+kibana_elasticsearch_startup_timeout: 5000
+kibana_elasticsearch_url: http://localhost:9200
+kibana_elasticsearch_username: ''
+
+kibana_logging_dest: stdout
+kibana_logging_quiet: false
+kibana_logging_silent: false
+kibana_logging_verbose: false
