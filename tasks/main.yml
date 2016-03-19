@@ -65,6 +65,6 @@
     dest: "{{ kibana_install_dir }}/current/config/kibana.yml"
     owner: root
     group: root
-    mode: 0755
+    mode: 0644
   tags:
     - kibana
