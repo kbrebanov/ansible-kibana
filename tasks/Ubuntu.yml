@@ -9,30 +9,6 @@
   tags:
     - kibana
 
-#- name: Add Kibana 3.0 repository
-#  become: yes
-#  apt_repository:
-#    repo: 'deb http://packages.elastic.co/kibana/3.0/debian stable main'
-#    state: present
-#  tags:
-#    - kibana
-
-#- name: Add Kibana 3.1 repository
-#  become: yes
-#  apt_repository:
-#    repo: 'deb http://packages.elastic.co/kibana/3.1/debian stable main'
-#    state: present
-#  tags:
-#    - kibana
-
-#- name: Add Kibana 4.0 repository
-#  become: yes
-#  apt_repository:
-#    repo: 'deb http://packages.elastic.co/kibana/4.0/debian stable main'
-#    state: present
-#  tags:
-#    - kibana
-
 - name: Add Kibana 4.1 repository
   become: yes
   apt_repository:
@@ -40,22 +16,6 @@
     state: present
   tags:
     - kibana
-
-#- name: Add Kibana 4.2 repository
-#  become: yes
-#  apt_repository:
-#    repo: 'deb http://packages.elastic.co/kibana/4.2/debian stable main'
-#    state: present
-#  tags:
-#    - kibana
-
-#- name: Add Kibana 4.3 repository
-#  become: yes
-#  apt_repository:
-#    repo: 'deb http://packages.elastic.co/kibana/4.3/debian stable main'
-#    state: present
-#  tags:
-#    - kibana
 
 - name: Add Kibana 4.4 repository
   become: yes
