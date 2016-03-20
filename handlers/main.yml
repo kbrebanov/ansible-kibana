@@ -1,2 +1,10 @@
 ---
 # handlers file for kibana
+
+- name: restart kibana
+  become: yes
+  service:
+    name: "{{ kibana_service_name }}"
+    state: restarted
+  tags:
+    - kibana

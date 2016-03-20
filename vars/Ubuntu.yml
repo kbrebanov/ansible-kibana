@@ -1,2 +1,5 @@
 ---
 # vars file for kibana (Ubuntu specific)
+
+kibana_packages:
+  - kibana={{ kibana_version }}

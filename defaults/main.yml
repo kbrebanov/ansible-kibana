@@ -2,7 +2,6 @@
 # defaults file for kibana
 
 kibana_version: 4.4.2
-kibana_sha256sum: ce0504d7a9440200b49851a64e010ddf8a8ed7b881135f6121d594ba1c0d6cfd
 
 kibana_default_app_id: discover
 kibana_index: .kibana
@@ -27,7 +26,6 @@ kibana_elasticsearch_startup_timeout: 5000
 kibana_elasticsearch_url: http://localhost:9200
 kibana_elasticsearch_username: ''
 
-kibana_logging_dest: stdout
 kibana_logging_quiet: false
 kibana_logging_silent: false
 kibana_logging_verbose: false

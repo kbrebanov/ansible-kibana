@@ -1,2 +1,77 @@
 ---
 # tasks file for kibana (Ubuntu specific)
+
+- name: Install Elasticsearch PGP key
+  become: yes
+  apt_key:
+    url: https://packages.elastic.co/GPG-KEY-elasticsearch
+    state: present
+  tags:
+    - kibana
+
+#- name: Add Kibana 3.0 repository
+#  become: yes
+#  apt_repository:
+#    repo: 'deb http://packages.elastic.co/kibana/3.0/debian stable main'
+#    state: present
+#  tags:
+#    - kibana
+
+#- name: Add Kibana 3.1 repository
+#  become: yes
+#  apt_repository:
+#    repo: 'deb http://packages.elastic.co/kibana/3.1/debian stable main'
+#    state: present
+#  tags:
+#    - kibana
+
+#- name: Add Kibana 4.0 repository
+#  become: yes
+#  apt_repository:
+#    repo: 'deb http://packages.elastic.co/kibana/4.0/debian stable main'
+#    state: present
+#  tags:
+#    - kibana
+
+- name: Add Kibana 4.1 repository
+  become: yes
+  apt_repository:
+    repo: 'deb http://packages.elastic.co/kibana/4.1/debian stable main'
+    state: present
+  tags:
+    - kibana
+
+#- name: Add Kibana 4.2 repository
+#  become: yes
+#  apt_repository:
+#    repo: 'deb http://packages.elastic.co/kibana/4.2/debian stable main'
+#    state: present
+#  tags:
+#    - kibana
+
+#- name: Add Kibana 4.3 repository
+#  become: yes
+#  apt_repository:
+#    repo: 'deb http://packages.elastic.co/kibana/4.3/debian stable main'
+#    state: present
+#  tags:
+#    - kibana
+
+- name: Add Kibana 4.4 repository
+  become: yes
+  apt_repository:
+    repo: 'deb http://packages.elastic.co/kibana/4.4/debian stable main'
+    state: present
+  tags:
+    - kibana
+
+- name: Install Kibana packages
+  become: yes
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - "{{ kibana_packages }}"
+  tags:
+    - kibana

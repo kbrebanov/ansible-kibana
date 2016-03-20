@@ -54,10 +54,6 @@ elasticsearch.shardTimeout: {{ kibana_elasticsearch_shard_timeout }}
 
 elasticsearch.startupTimeout: {{ kibana_elasticsearch_startup_timeout }}
 
-pid.file: {{ kibana_pid_file }}
-
-logging.dest: {{ kibana_logging_dest }}
-
 {% if kibana_logging_silent %}
 logging.silent: true
 {% else %}
