@@ -1,6 +1,8 @@
 kibana
 ======
 
+[![Build Status](https://travis-ci.org/kbrebanov/ansible-kibana.svg?branch=master)](https://travis-ci.org/kbrebanov/ansible-kibana)
+
 Installs and configures Kibana
 
 Requirements
