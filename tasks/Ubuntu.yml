@@ -36,6 +36,15 @@
   tags:
     - kibana
 
+- name: Add Kibana 4.6 repository
+  become: yes
+  apt_repository:
+    repo: 'deb http://packages.elastic.co/kibana/4.6/debian stable main'
+    state: present
+  when: kibana_version|string|version_compare('4.6', '>=') and kibana_version|string|version_compare('4.7', '<')
+  tags:
+    - kibana
+
 - name: Install Kibana packages
   become: yes
   apt:
