@@ -49,7 +49,7 @@ Example Playbook
 ----------------
 
 Install Kibana
-```
+```yaml
 - hosts: all
   roles:
     - kbrebanov.kibana
