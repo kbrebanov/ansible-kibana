@@ -1,7 +1,7 @@
 ---
 # defaults file for kibana
 
-kibana_version: 4.6.1
+kibana_version: 5.4.2
 
 kibana_default_app_id: discover
 kibana_index: .kibana

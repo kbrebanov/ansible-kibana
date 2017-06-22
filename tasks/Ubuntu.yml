@@ -45,6 +45,15 @@
   tags:
     - kibana
 
+- name: Add Kibana 5.x repository
+  become: yes
+  apt_repository:
+    repo: 'deb https://artifacts.elastic.co/packages/5.x/apt stable main'
+    state: present
+  when: kibana_version|string|version_compare('5.0', '>=') and kibana_version|string|version_compare('6.0', '<')
+  tags:
+    - kibana
+
 - name: Install Kibana packages
   become: yes
   apt:
