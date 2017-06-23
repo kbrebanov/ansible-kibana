@@ -4,28 +4,38 @@
 kibana_version: 5.4.2
 
 kibana_default_app_id: discover
+kibana_i18n_default_locale: en
 kibana_index: .kibana
 
 kibana_server_base_path: ''
-kibana_server_host: 0.0.0.0
+kibana_server_host: localhost
 kibana_server_max_payload_bytes: 1048576
+kibana_server_name: ''
 kibana_server_port: 5601
 kibana_server_ssl_cert: ''
+kibana_server_ssl_enabled: false
 kibana_server_ssl_key: ''
 
+kibana_elasticsearch_custom_headers: {}
 kibana_elasticsearch_password: ''
 kibana_elasticsearch_ping_timeout: "{{ kibana_elasticsearch_request_timeout }}"
 kibana_elasticsearch_preserve_host: true
+kibana_elasticsearch_request_headers_whitelist: [ authorization ]
 kibana_elasticsearch_request_timeout: 300000
 kibana_elasticsearch_shard_timeout: 0
 kibana_elasticsearch_ssl_ca: ''
 kibana_elasticsearch_ssl_cert: ''
 kibana_elasticsearch_ssl_key: ''
+kibana_elasticsearch_ssl_verification_mode: full
 kibana_elasticsearch_ssl_verify: true
 kibana_elasticsearch_startup_timeout: 5000
 kibana_elasticsearch_url: http://localhost:9200
 kibana_elasticsearch_username: ''
 
+kibana_logging_dest: stdout
 kibana_logging_quiet: false
 kibana_logging_silent: false
 kibana_logging_verbose: false
+
+kibana_ops_interval: 5000
+kibana_pid_file: ''
