@@ -12,7 +12,7 @@ kibana_server_host: localhost
 kibana_server_max_payload_bytes: 1048576
 kibana_server_name: ''
 kibana_server_port: 5601
-kibana_server_ssl_cert: ''
+kibana_server_ssl_certificate: ''
 kibana_server_ssl_enabled: false
 kibana_server_ssl_key: ''
 
@@ -23,14 +23,15 @@ kibana_elasticsearch_preserve_host: true
 kibana_elasticsearch_request_headers_whitelist: [ authorization ]
 kibana_elasticsearch_request_timeout: 300000
 kibana_elasticsearch_shard_timeout: 0
-kibana_elasticsearch_ssl_ca: ''
-kibana_elasticsearch_ssl_cert: ''
+kibana_elasticsearch_ssl_certificate_authorities: ''
+kibana_elasticsearch_ssl_certificate: ''
 kibana_elasticsearch_ssl_key: ''
 kibana_elasticsearch_ssl_verification_mode: full
-kibana_elasticsearch_ssl_verify: true
 kibana_elasticsearch_startup_timeout: 5000
 kibana_elasticsearch_url: http://localhost:9200
 kibana_elasticsearch_username: ''
+
+kibana_kill_on_stop_timeout: false
 
 kibana_logging_dest: stdout
 kibana_logging_quiet: false

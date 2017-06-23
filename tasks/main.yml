@@ -33,23 +33,10 @@
   become: yes
   template:
     src: kibana.yml.j2
-    dest: "/opt/kibana/config/kibana.yml"
-    owner: root
-    group: root
-    mode: 0664
-  when: ansible_version|string|version_compare('5.0', '<')
-  tags:
-    - kibana
-
-- name: Create Kibana configuration file
-  become: yes
-  template:
-    src: kibana.yml.j2
     dest: /etc/kibana/kibana.yml
     owner: root
     group: root
     mode: 0644
-  when: ansible_version|string|version_compare('5.0', '>=')
   tags:
     - kibana
 

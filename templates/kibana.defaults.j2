@@ -1,18 +1,16 @@
 # {{ ansible_managed }}
 
 user="kibana"
-{% if ansible_version|string|version_compare('5.0', '<') %}
-group="root"
-{% else %}
 group="kibana"
-{% endif %}
 chroot="/"
 chdir="/"
 nice=""
 
-{% if ansible_version|string|version_compare('5.0', '>=') %}
 # If this is set to 1, then when `stop` is called, if the process has
 # not exited within a reasonable time, SIGKILL will be sent next.
 # The default behavior is to simply log a message "program stop failed; still running"
+{% if kibana_kill_on_stop_timeout %}
+KILL_ON_STOP_TIMEOUT=1
+{% else %}
 KILL_ON_STOP_TIMEOUT=0
 {% endif %}

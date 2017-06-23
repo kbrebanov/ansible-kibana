@@ -4,10 +4,8 @@ server.port: {{ kibana_server_port }}
 server.host: "{{ kibana_server_host }}"
 server.basePath: "{{ kibana_server_base_path }}"
 server.maxPayloadBytes: {{ kibana_server_max_payload_bytes }}
-{% if ansible_version|string|version_compare('5.0', '>=') %}
-{% if kibana_server_name is defined and kibana_server_name != '' %}
+{% if kibana_server_name %}
 server.name: "{{ kibana_server_name }}"
-{% endif %}
 {% endif %}
 
 elasticsearch.url: "{{ kibana_elasticsearch_url }}"
@@ -27,72 +25,46 @@ elasticsearch.username: "{{ kibana_elasticsearch_username }}"
 elasticsearch.password: "{{ kibana_elasticsearch_password }}"
 {% endif %}
 
-{% if ansible_version|string|version_compare('5.0', '>=') %}
 {% if kibana_server_ssl_enabled %}
 server.ssl.enabled: true
 {% else %}
 server.ssl.enabled: false
 {% endif %}
-{% endif %}
-{% if kibana_server_ssl_cert %}
-{% if kibana_version|string|version_compare('5.0', '>=') %}
-server.ssl.certificate: {{ kibana_server_ssl_cert }}
-{% else %}
-server.ssl.cert: {{ kibana_server_ssl_cert }}
-{% endif %}
+{% if kibana_server_ssl_certificate %}
+server.ssl.certificate: {{ kibana_server_ssl_certificate }}
 {% endif %}
 {% if kibana_server_ssl_key %}
 server.ssl.key: {{ kibana_server_ssl_key }}
 {% endif %}
 
-{% if kibana_elasticsearch_ssl_cert %}
-{% if kibana_version|string|version_compare('5.0', '>=') %}
-elasticsearch.ssl.certificate: {{ kibana_elasticsearch_ssl_cert }}
-{% else %}
-elasticsearch.ssl.cert: {{ kibana_elasticsearch_ssl_cert }}
-{% endif %}
+{% if kibana_elasticsearch_ssl_certificate %}
+elasticsearch.ssl.certificate: {{ kibana_elasticsearch_ssl_certificate }}
 {% endif %}
 {% if kibana_elasticsearch_ssl_key %}
 elasticsearch.ssl.key: {{ kibana_elasticsearch_ssl_key }}
 {% endif %}
 
-{% if kibana_elasticsearch_ssl_ca %}
-{% if kibana_version|string|version_compare('5.0', '>=') %}
-elasticsearch.ssl.certificateAuthorities: [ "{{ kibana_elasticsearch_ssl_ca }}" ]
-{% else %}
-elasticsearch.ssl.ca: {{ kibana_elasticsearch_ssl_ca }}
-{% endif %}
+{% if kibana_elasticsearch_ssl_certificate_authorities %}
+elasticsearch.ssl.certificateAuthorities: [ "{{ kibana_elasticsearch_ssl_certificate_authorities }}" ]
 {% endif %}
 
-{% if kibana_version|string|version_compare('5.0', '>=') %}
 elasticsearch.ssl.verificationMode: {{ kibana_elasticsearch_ssl_verification_mode }}
-{% else %}
-{% if kibana_elasticsearch_ssl_verify %}
-elasticsearch.ssl.verify: true
-{% else %}
-elasticsearch.ssl.verify: false
-{% endif %}
-{% endif %}
 
 elasticsearch.pingTimeout: {{ kibana_elasticsearch_ping_timeout }}
 
 elasticsearch.requestTimeout: {{ kibana_elasticsearch_request_timeout }}
 
-{% if kibana_version|string|version_compare('5.0', '>=') %}
 elasticsearch.requestHeadersWhitelist: {{ kibana_elasticsearch_request_headers_whitelist }}
 elasticsearch.customHeaders: {{ kibana_elasticsearch_custom_headers }}
-{% endif %}
 
 elasticsearch.shardTimeout: {{ kibana_elasticsearch_shard_timeout }}
 
 elasticsearch.startupTimeout: {{ kibana_elasticsearch_startup_timeout }}
 
-{% if kibana_version|string|version_compare('5.0', '>=') %}
-{% if kibana_pid_file is defined and kibana_pid_file != '' %}
+{% if kibana_pid_file %}
 pid.file: {{ kibana_pid_file }}
 {% endif %}
 logging.dest: {{ kibana_logging_dest }}
-{% endif %}
 
 {% if kibana_logging_silent %}
 logging.silent: true
@@ -112,7 +84,5 @@ logging.verbose: true
 logging.verbose: false
 {% endif %}
 
-{% if kibana_version|string|version_compare('5.0', '>=') %}
 ops.interval: {{ kibana_ops_interval }}
 i18n.defaultLocale: "{{ kibana_i18n_default_locale }}"
-{% endif %}

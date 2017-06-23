@@ -4,44 +4,8 @@
 - name: Install Elasticsearch PGP key
   become: yes
   apt_key:
-    url: https://packages.elastic.co/GPG-KEY-elasticsearch
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
     state: present
-  tags:
-    - kibana
-
-- name: Add Kibana 4.1 repository
-  become: yes
-  apt_repository:
-    repo: 'deb http://packages.elastic.co/kibana/4.1/debian stable main'
-    state: present
-  when: kibana_version|string|version_compare('4.1', '>=') and kibana_version|string|version_compare('4.4', '<')
-  tags:
-    - kibana
-
-- name: Add Kibana 4.4 repository
-  become: yes
-  apt_repository:
-    repo: 'deb http://packages.elastic.co/kibana/4.4/debian stable main'
-    state: present
-  when: kibana_version|string|version_compare('4.4', '>=') and kibana_version|string|version_compare('4.5', '<')
-  tags:
-    - kibana
-
-- name: Add Kibana 4.5 repository
-  become: yes
-  apt_repository:
-    repo: 'deb http://packages.elastic.co/kibana/4.5/debian stable main'
-    state: present
-  when: kibana_version|string|version_compare('4.5', '>=') and kibana_version|string|version_compare('4.6', '<')
-  tags:
-    - kibana
-
-- name: Add Kibana 4.6 repository
-  become: yes
-  apt_repository:
-    repo: 'deb http://packages.elastic.co/kibana/4.6/debian stable main'
-    state: present
-  when: kibana_version|string|version_compare('4.6', '>=') and kibana_version|string|version_compare('4.7', '<')
   tags:
     - kibana
 
@@ -50,7 +14,6 @@
   apt_repository:
     repo: 'deb https://artifacts.elastic.co/packages/5.x/apt stable main'
     state: present
-  when: kibana_version|string|version_compare('5.0', '>=') and kibana_version|string|version_compare('6.0', '<')
   tags:
     - kibana
 
